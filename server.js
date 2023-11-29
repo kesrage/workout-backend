@@ -1,7 +1,9 @@
 import 'colors'
 import dotenv from 'dotenv'
-import express from 'express' // Иvgорт Express
+import express from 'express' // Импорт Express
 import authRoutes from './app/auth/auth.routes.js' //Импорт AuthRoutes
+import userRoutes from './app/user/user.routes.js'
+
 import morgan from 'morgan'
 import { prisma } from './app/prisma.js'
 import { errorHandler, notFound } from './app/middleware/error.middleware.js'
@@ -15,6 +17,7 @@ async function main() {
 
 	app.use(express.json())
 	app.use('/api/auth', authRoutes)
+	app.use('/api/users', userRoutes)
 
 	app.use(notFound) //Вызываем middleware notFound
 	app.use(errorHandler) //Вызываем middleware errorHandler
