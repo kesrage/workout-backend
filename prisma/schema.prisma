@@ -18,5 +18,26 @@ model User {
   email    String   @unique //Уникальный email
   name     String? //Имя пользователя
   password String //Пароль
-  images    String[] //Картинка до-после тренировки
+  images   String[] //Картинка до-после тренировки
+}
+
+model Workout {
+  id        Int      @id @default(autoincrement()) //Уникальный идентификатор сущности
+  createdAt DateTime @default(now()) @map("created_at") //Дата создания
+  updateAt  DateTime @updatedAt @map("updated_at") //Дата обновления
+
+  name String
+  exercises Exercise[]
+}
+
+model Exercise {
+  id        Int      @id @default(autoincrement()) //Уникальный идентификатор сущности
+  createdAt DateTime @default(now()) @map("created_at") //Дата создания
+  updateAt  DateTime @updatedAt @map("updated_at") //Дата обновления
+
+  name String
+  times Int
+  iconPath String @map("icon_path")
+
+  workouts Workout[]
 }
