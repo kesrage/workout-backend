@@ -4,6 +4,7 @@ import express from 'express' // Импорт Express
 import authRoutes from './app/auth/auth.routes.js' //Импорт AuthRoutes
 import userRoutes from './app/user/user.routes.js'
 import exerciseRoutes from './app/exercise/exersice.routes.js'
+import workoutRoutes from './app/workout/workout.routes.js'
 
 
 import path from 'path'
@@ -27,6 +28,7 @@ async function main() {
 	app.use('/api/auth', authRoutes)
 	app.use('/api/users', userRoutes)
 	app.use('/api/exercises', exerciseRoutes)
+	app.use('/api/workouts', workoutRoutes)
 
 	app.use(notFound) //Вызываем middleware notFound
 	app.use(errorHandler) //Вызываем middleware errorHandler
